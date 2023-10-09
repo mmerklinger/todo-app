@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "todo-app"
+version = "0.1.0"
+description = "A web-based todo application"
+authors = ["Markus Merklinger <markus.merklinger@code.berlin>"]
+readme = "README.md"
+packages = [{include = "todo_app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

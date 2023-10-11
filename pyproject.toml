@@ -9,7 +9,25 @@ packages = [{include = "todo_app"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+flake8 = "^6.1.0"
+isort = "^5.12.0"
+mypy = "^1.5.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ["py311"]
+line-length = 140
+
+[tool.isort]
+py_version = "311"
+profile = "black"
+
+[tool.mypy]
+python_version = "3.11"
+explicit_package_bases = true
+strict = true

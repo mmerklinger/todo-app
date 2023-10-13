@@ -27,6 +27,7 @@ class DefaultConfig(object):
     MAX_CONTENT_LENGTH = None
     TEMPLATES_AUTO_RELOAD = None
     EXPLAIN_TEMPLATE_LOADING = False
+    SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite"
 
 
 def create_config(root_path: str) -> Config:

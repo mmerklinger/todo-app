@@ -10,6 +10,8 @@ def create_app() -> Flask:
 
     db = create_db()
     db.init_app(app)
+    with app.app_context():
+        db.create_all()
 
     return app
 

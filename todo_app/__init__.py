@@ -2,6 +2,7 @@ from flask import Flask
 
 from .config import create_config
 from .db import create_db
+from .views import bp_root
 
 
 def create_app() -> Flask:
@@ -12,6 +13,7 @@ def create_app() -> Flask:
     db.init_app(app)
     with app.app_context():
         db.create_all()
+    app.register_blueprint(bp_root)
 
     return app
 

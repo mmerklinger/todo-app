@@ -1,6 +1,7 @@
 from datetime import timedelta
 from os.path import exists
 
+from dotenv import load_dotenv
 from flask.config import Config
 
 
@@ -33,8 +34,6 @@ class DefaultConfig(object):
 def create_config(root_path: str) -> Config:
     config = Config(root_path)
     config.from_object(DefaultConfig())
-    if exists(".env"):
-        config.from_pyfile(".env", silent=True)
-    else:
-        config.from_prefixed_env()
+    load_dotenv()
+    config.from_prefixed_env()
     return config

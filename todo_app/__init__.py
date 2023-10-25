@@ -1,8 +1,8 @@
 from flask import Flask
 
-from .config import create_config
-from .db import create_db
-from .views import bp_root
+from todo_app.config import create_config
+from todo_app.db import create_db
+from todo_app.views import bp_root
 
 
 def create_app() -> Flask:

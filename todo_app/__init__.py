@@ -1,15 +1,17 @@
 from flask import Flask
+from flask.config import Config
 
 from todo_app.config import create_config
 from todo_app.db import create_db
 from todo_app.views import bp_root
 
+config = create_config(__path__[0])
 db = create_db()
 
 
-def create_app() -> Flask:
+def create_app(config: Config) -> Flask:
     app = Flask(__name__)
-    app.config = create_config(app.root_path)
+    app.config = config
 
     db.init_app(app)
     with app.app_context():
@@ -19,4 +21,4 @@ def create_app() -> Flask:
     return app
 
 
-app = create_app()
+app = create_app(config)

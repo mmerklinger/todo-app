@@ -1,5 +1,6 @@
 from flask import Flask
 from flask.config import Config
+from flask_sqlalchemy import SQLAlchemy
 
 from todo_app.config import create_config
 from todo_app.db import create_db
@@ -9,7 +10,7 @@ config = create_config(__path__[0])
 db = create_db()
 
 
-def create_app(config: Config) -> Flask:
+def create_app(config: Config, db: SQLAlchemy) -> Flask:
     app = Flask(__name__)
     app.config = config
 
@@ -21,4 +22,4 @@ def create_app(config: Config) -> Flask:
     return app
 
 
-app = create_app(config)
+app = create_app(config, db)

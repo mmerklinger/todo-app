@@ -7,6 +7,22 @@ body {
     background-color: #F5F5F5;
 }
 
+/* tables */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+table, th, td {
+    padding: 5px;
+    border: 1px solid black;
+    text-align: left;
+    overflow: hidden;
+}
+
 /* grid */
 
 .grid-container {

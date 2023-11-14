@@ -4,6 +4,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                     {% for task in tasks %}
                     <tr>
@@ -13,6 +14,9 @@
                         {% else %}
                         <th>Closed</th>
                         {% endif %}
+                        <th>
+                            <button onclick="window.location.href='{{ url_for('tasks.get_by_id', id=task.id) }}';">Show</button>
+                        </th>
                     </tr>
                     {% endfor %}
                 </table>

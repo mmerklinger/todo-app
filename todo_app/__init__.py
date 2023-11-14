@@ -5,8 +5,8 @@ from todo_app.db import create_db
 config = create_config(__path__[0])
 db = create_db()
 
-from todo_app.views import bp_root
+from todo_app.views import bp_root, bp_tasks
 
-blueprints = [bp_root]
+blueprints = [bp_root, bp_tasks]
 
 app = create_app(config, db, blueprints)

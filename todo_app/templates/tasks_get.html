@@ -1,5 +1,6 @@
 {% include 'header.html' %}
                 <h1>Tasks</h1>
+                <p><button onclick="window.location.href='{{ url_for('tasks.create') }}';">Create task</button></p>
                 <table>
                     <tr>
                         <th>Title</th>

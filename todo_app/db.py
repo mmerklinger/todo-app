@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy import Boolean, Integer, String
+from sqlalchemy.orm import DeclarativeBase, mapped_column
 
 
 class Base(DeclarativeBase):
@@ -8,3 +9,14 @@ class Base(DeclarativeBase):
 
 def create_db() -> SQLAlchemy:
     return SQLAlchemy(model_class=Base)
+
+
+from todo_app import db
+
+
+class Tasks(Base):
+    __tablename__ = "tasks"
+    id = mapped_column(Integer, primary_key=True)
+    title = mapped_column(String, nullable=False)
+    description = mapped_column(String)
+    open = mapped_column(Boolean, nullable=False)

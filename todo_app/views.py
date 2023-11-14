@@ -40,6 +40,20 @@ def create() -> ResponseReturnValue:
     return render_template("tasks_create.html")
 
 
+@bp_tasks.route("/<int:id>/update", methods=["GET", "POST"])
+def update_by_id(id: int) -> ResponseReturnValue:
+    task = db.get_or_404(Tasks, id)
+
+    if request.method == "POST":
+        task.title = request.form["title"]
+        task.description = request.form["description"]
+        db.session.add(task)
+        db.session.commit()
+        return redirect(url_for("tasks.get"))
+
+    return render_template("tasks_update_by_id.html", task=task)
+
+
 @bp_tasks.route("/<int:id>/close", methods=["GET"])
 def close_by_id(id: int) -> ResponseReturnValue:
     task = db.get_or_404(Tasks, id)

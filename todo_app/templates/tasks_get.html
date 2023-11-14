@@ -1,0 +1,19 @@
+{% include 'header.html' %}
+                <h1>Tasks</h1>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                    </tr>
+                    {% for task in tasks %}
+                    <tr>
+                        <th>{{ task.title }}</th>
+                        {% if task.open %}
+                        <th>Open</th>
+                        {% else %}
+                        <th>Closed</th>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+{% include 'footer.html' %}

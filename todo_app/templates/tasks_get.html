@@ -16,6 +16,7 @@
                         {% endif %}
                         <th>
                             <button onclick="window.location.href='{{ url_for('tasks.get_by_id', id=task.id) }}';">Show</button>
+                            <button onclick="window.location.href='{{ url_for('tasks.delete_by_id', id=task.id) }}';">Delete</button>
                         </th>
                     </tr>
                     {% endfor %}

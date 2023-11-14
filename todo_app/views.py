@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask.typing import ResponseReturnValue
 
 from todo_app import db
@@ -23,6 +23,21 @@ def get() -> ResponseReturnValue:
 def get_by_id(id: int) -> ResponseReturnValue:
     task = db.get_or_404(Tasks, id)
     return render_template("tasks_get_by_id.html", task=task)
+
+
+@bp_tasks.route("/create", methods=["GET", "POST"])
+def create() -> ResponseReturnValue:
+    if request.method == "POST":
+        task = Tasks(
+            title=request.form["title"],
+            description=request.form["description"],
+            open=True,
+        )
+        db.session.add(task)
+        db.session.commit()
+        return redirect(url_for("tasks.get"))
+
+    return render_template("tasks_create.html")
 
 
 @bp_tasks.route("/<int:id>/close", methods=["GET"])

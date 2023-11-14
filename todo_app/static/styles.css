@@ -56,6 +56,17 @@ body {
     height: 100%;
 }
 
+.header-logo {
+    margin-right: 0.25rem;
+    height: 100%;
+}
+
+.header-title {
+    line-height: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 @media screen and (min-width: 768px) {
     /* grid */
     

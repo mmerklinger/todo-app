@@ -17,3 +17,9 @@ def index() -> ResponseReturnValue:
 def get() -> ResponseReturnValue:
     tasks = db.session.execute(db.select(Tasks)).scalars()
     return render_template("tasks_get.html", tasks=tasks)
+
+
+@bp_tasks.route("/<int:id>", methods=["GET"])
+def get_by_id(id: int) -> ResponseReturnValue:
+    task = db.get_or_404(Tasks, id)
+    return render_template("tasks_get_by_id.html", task=task)

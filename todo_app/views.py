@@ -25,6 +25,17 @@ def get_by_id(id: int) -> ResponseReturnValue:
     return render_template("tasks_get_by_id.html", task=task)
 
 
+@bp_tasks.route("/<int:id>/open", methods=["GET"])
+def open_by_id(id: int) -> ResponseReturnValue:
+    task = db.get_or_404(Tasks, id)
+
+    task.open = True
+
+    db.session.add(task)
+    db.session.commit()
+    return render_template("tasks_open_by_id.html", task=task)
+
+
 @bp_tasks.route("/<int:id>/delete", methods=["GET"])
 def delete_by_id(id: int) -> ResponseReturnValue:
     task = db.get_or_404(Tasks, id)

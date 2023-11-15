@@ -23,11 +23,18 @@ table, th, td {
     overflow: hidden;
 }
 
-/* forms */
+/* task box */
 
-input, textarea {
+.task-box {
+    display: flexbox;
+    flex-direction: row;
+}
+
+.task-box-form-element > input, textarea {
     box-sizing: border-box;
-    width: 100%
+    width: 100%;
+    resize: none;
+    margin-bottom: 1em;
 }
 
 /* grid */

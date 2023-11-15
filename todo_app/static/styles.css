@@ -37,6 +37,10 @@ table, th, td {
     margin-bottom: 1em;
 }
 
+.task-box-actions {
+    text-align: right;
+}
+
 /* grid */
 
 .grid-container {

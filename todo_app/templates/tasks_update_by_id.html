@@ -1,17 +1,19 @@
 {% include 'header.html' %}
                 <h1>Task update</h1>
-                <form method="post">
-                    <p>
-                        <label for="title">Title</label>
-                        <input type="text" name="title" value="{{ task.title }}"></input>
-                    </p>
-                    <p>
-                        <label for="description">Description</label>
-                        <br>
-                        <textarea name="description" rows="10">{{ task.description }}</textarea>
-                    </p>
-                    <p>
-                        <button type="submit">Save</button>
-                    </p>
-                </form>
+                <div class="task-box"></div>
+                    <form method="post">
+                        <div class="task-box-form-element">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" value="{{ task.title }}"></input>
+                        </div>
+                        <div class="task-box-form-element">
+                            <label for="description">Description</label>
+                            <br>
+                            <textarea name="description">{{ task.description }}</textarea>
+                        </div>
+                        <div class="task-box-form-element">
+                            <button type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
 {% include 'footer.html' %}

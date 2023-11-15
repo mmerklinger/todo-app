@@ -23,6 +23,13 @@ table, th, td {
     overflow: hidden;
 }
 
+/* forms */
+
+input, textarea {
+    box-sizing: border-box;
+    width: 100%
+}
+
 /* grid */
 
 .grid-container {

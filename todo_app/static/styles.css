@@ -47,6 +47,7 @@ table, th, td {
     display: grid;
     grid-template-columns: 1fr 1fr 4fr;
     gap: 0px 0px;
+    min-width: 360px;
 }
 
 .header {

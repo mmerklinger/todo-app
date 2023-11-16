@@ -1,6 +1,7 @@
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from flask.typing import ResponseReturnValue
 from sqlalchemy.exc import NoResultFound
+from werkzeug.security import check_password_hash
 
 from todo_app import db
 from todo_app.db import Tasks, Users
@@ -97,7 +98,7 @@ def login():
         except NoResultFound:
             flash("Authentication failed. Please try again.")
 
-        if user.username == username and user.password == password:
+        if user.username == username and check_password_hash(user.password, password):
             session.clear()
             session["user_id"] = user.id
             return redirect(url_for("root.index"))

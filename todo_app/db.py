@@ -20,3 +20,10 @@ class Tasks(Base):
     title = mapped_column(String, nullable=False)
     description = mapped_column(String)
     open = mapped_column(Boolean, nullable=False)
+
+
+class Users(Base):
+    __tablename__ = "users"
+    id = mapped_column(Integer, primary_key=True)
+    username = mapped_column(String, nullable=False)
+    password = mapped_column(String, nullable=False)

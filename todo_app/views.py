@@ -103,3 +103,9 @@ def login():
             return redirect(url_for("root.index"))
 
     return render_template("auth_login.html")
+
+
+@bp_auth.route("/logout", methods=["GET"])
+def logout():
+    session.clear()
+    return redirect(url_for("root.index"))

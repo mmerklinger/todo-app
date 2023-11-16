@@ -6,6 +6,7 @@ from todo_app.db import Tasks
 
 bp_root = Blueprint("root", __name__, url_prefix="/")
 bp_tasks = Blueprint("tasks", __name__, url_prefix="/tasks")
+bp_auth = Blueprint("auth", __name__, url_prefix="/auth")
 
 
 @bp_root.route("/")

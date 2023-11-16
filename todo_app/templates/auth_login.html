@@ -1,0 +1,30 @@
+{% include 'header.html' %}
+                <h1>Login</h1>
+
+                <div class="auth-box">
+                    <div class="auth-box-message-element">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <a>{{ message }}</a>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <form method="post">
+                        <div class="auth-box-form-element">
+                            <label for="username">Username</label>
+                            <br>
+                            <input type="text"name="username"></input>
+                        </div>
+                        <div class="auth-box-form-element">
+                            <label for="password">Password</label>
+                            <br>
+                            <input type="password" name="password"></input>
+                        </div>
+                        <div class="auth-box-form-element">
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+{% include 'footer.html' %}

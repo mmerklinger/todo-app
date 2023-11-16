@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Boolean, Integer, String
+from sqlalchemy import Boolean, ForeignKey, Integer, String
 from sqlalchemy.orm import DeclarativeBase, mapped_column
 
 
@@ -20,6 +20,7 @@ class Tasks(Base):
     title = mapped_column(String, nullable=False)
     description = mapped_column(String)
     open = mapped_column(Boolean, nullable=False)
+    user_id = mapped_column(ForeignKey("users.id"))
 
 
 class Users(Base):

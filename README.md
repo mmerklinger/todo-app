@@ -24,4 +24,5 @@ Appending `--debug` to the command above will start the server in development mo
 During development the service can be configured by specifiying the configuration in a `.env` file in the project root.
 For the deployment in a production environment it's recommended to configure them as environment variables.
 A minimum configuration consists of the configuration keys `FLASK_SECRET_KEY` and `FLASK_SERVER_NAME`.
+The documentation of [Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/#sessions) describes how to generate a good secret key.
 More information about the possible configuration keys and values are available in the documentation of [Flask](https://flask.palletsprojects.com/en/3.0.x/config/#builtin-configuration-values) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/config/#configuration-keys).

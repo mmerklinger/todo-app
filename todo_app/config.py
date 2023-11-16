@@ -28,6 +28,7 @@ class DefaultConfig(object):
     MAX_CONTENT_LENGTH = None
     TEMPLATES_AUTO_RELOAD = None
     EXPLAIN_TEMPLATE_LOADING = False
+    MAX_COOKIE_SIZE = 4096
     SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite"
 
 

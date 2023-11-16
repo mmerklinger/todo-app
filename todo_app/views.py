@@ -1,8 +1,9 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, session, url_for
 from flask.typing import ResponseReturnValue
+from sqlalchemy.exc import NoResultFound
 
 from todo_app import db
-from todo_app.db import Tasks
+from todo_app.db import Tasks, Users
 
 bp_root = Blueprint("root", __name__, url_prefix="/")
 bp_tasks = Blueprint("tasks", __name__, url_prefix="/tasks")
@@ -83,3 +84,22 @@ def delete_by_id(id: int) -> ResponseReturnValue:
     db.session.delete(task)
     db.session.commit()
     return render_template("tasks_delete_by_id.html", task=task)
+
+
+@bp_auth.route("/login", methods=("GET", "POST"))
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        try:
+            user = db.session.execute(db.select(Users).filter_by(username=username)).scalar_one()
+        except NoResultFound:
+            return render_template("auth_login.html")
+
+        if user.username == username and user.password == password:
+            session.clear()
+            session["user_id"] = user.id
+            return redirect(url_for("root.index"))
+
+    return render_template("auth_login.html")

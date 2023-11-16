@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, session, url_for
+from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from flask.typing import ResponseReturnValue
 from sqlalchemy.exc import NoResultFound
 
@@ -95,12 +95,13 @@ def login():
         try:
             user = db.session.execute(db.select(Users).filter_by(username=username)).scalar_one()
         except NoResultFound:
-            return render_template("auth_login.html")
+            flash("Authentication failed. Please try again.")
 
         if user.username == username and user.password == password:
             session.clear()
             session["user_id"] = user.id
             return redirect(url_for("root.index"))
+        flash("Authentication failed. Please try again.")
 
     return render_template("auth_login.html")
 

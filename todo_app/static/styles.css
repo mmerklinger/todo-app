@@ -41,6 +41,26 @@ table, th, td {
     text-align: right;
 }
 
+/* authentication box */
+
+.auth-box {
+    display: flexbox;
+    flex-direction: row;
+}
+
+.auth-box-message-element {
+    box-sizing: border-box;
+    resize: none;
+    margin-bottom: 1em;
+    color: red;
+}
+
+.auth-box-form-element > input, textarea {
+    box-sizing: border-box;
+    resize: none;
+    margin-bottom: 1em;
+}
+
 /* grid */
 
 .grid-container {

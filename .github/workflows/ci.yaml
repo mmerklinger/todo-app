@@ -14,7 +14,7 @@ jobs:
       - name: Install required packages
         run: |
           apt update
-          apt -y install python3-poetry
+          apt -y install python3-poetry libpq-dev
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Create virtual environment
@@ -34,7 +34,7 @@ jobs:
       - name: Install required packages
         run: |
           apt update
-          apt -y install python3-poetry
+          apt -y install python3-poetry libpq-dev
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Create virtual environment
@@ -54,7 +54,7 @@ jobs:
       - name: Install required packages
         run: |
           apt update
-          apt -y install python3-poetry
+          apt -y install python3-poetry libpq-dev
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Create virtual environment

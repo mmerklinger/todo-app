@@ -13,6 +13,7 @@ from flask import (
 )
 from flask.typing import ResponseReturnValue
 from sqlalchemy.exc import NoResultFound
+from typing import Any
 from werkzeug.security import check_password_hash
 
 from todo_app import db
@@ -26,7 +27,7 @@ bp_auth = Blueprint("auth", __name__, url_prefix="/auth")
 # load user from session for blueprint root
 @bp_root.before_app_request
 @bp_tasks.before_app_request
-def load_logged_in_user():
+def load_logged_in_user() -> None:
     user_id = session.get("user_id")
 
     if user_id is None:
@@ -36,9 +37,9 @@ def load_logged_in_user():
 
 
 # view decorator to require login
-def login_required(view):
+def login_required(view: Any) -> Any:
     @functools.wraps(view)
-    def wrapped_view(**kwargs):
+    def wrapped_view(**kwargs: Any) -> Any:
         if g.user is None:
             return redirect(url_for("auth.login"))
 
@@ -147,7 +148,7 @@ def delete_by_id(id: int) -> ResponseReturnValue:
 
 
 @bp_auth.route("/login", methods=("GET", "POST"))
-def login():
+def login() -> ResponseReturnValue:
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -167,6 +168,6 @@ def login():
 
 
 @bp_auth.route("/logout", methods=["GET"])
-def logout():
+def logout() -> ResponseReturnValue:
     session.clear()
     return redirect(url_for("root.index"))

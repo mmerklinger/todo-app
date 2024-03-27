@@ -1,4 +1,5 @@
 import functools
+from typing import Any
 
 from flask import (
     Blueprint,
@@ -12,8 +13,9 @@ from flask import (
     url_for,
 )
 from flask.typing import ResponseReturnValue
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import select
 from sqlalchemy.exc import NoResultFound
-from typing import Any
 from werkzeug.security import check_password_hash
 
 from todo_app import db
@@ -28,12 +30,13 @@ bp_auth = Blueprint("auth", __name__, url_prefix="/auth")
 @bp_root.before_app_request
 @bp_tasks.before_app_request
 def load_logged_in_user() -> None:
+    assert isinstance(db, SQLAlchemy)
     user_id = session.get("user_id")
 
     if user_id is None:
         g.user = None
     else:
-        g.user = db.session.execute(db.select(Users).filter_by(id=user_id)).scalar_one()
+        g.user = db.session.execute(select(Users).filter_by(id=user_id)).scalar_one()
 
 
 # view decorator to require login
@@ -56,15 +59,17 @@ def index() -> ResponseReturnValue:
 @bp_tasks.route("/", methods=["GET"])
 @login_required
 def get() -> ResponseReturnValue:
-    tasks = db.session.execute(db.select(Tasks).filter_by(user_id=g.user.id)).scalars()
+    assert isinstance(db, SQLAlchemy)
+    tasks = db.session.execute(select(Tasks).filter_by(user_id=g.user.id)).scalars()
     return render_template("tasks_get.html", tasks=tasks)
 
 
 @bp_tasks.route("/<int:id>", methods=["GET"])
 @login_required
 def get_by_id(id: int) -> ResponseReturnValue:
+    assert isinstance(db, SQLAlchemy)
     try:
-        task = db.session.execute(db.select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
+        task = db.session.execute(select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
     except NoResultFound:
         abort(404)
     return render_template("tasks_get_by_id.html", task=task)
@@ -73,6 +78,7 @@ def get_by_id(id: int) -> ResponseReturnValue:
 @bp_tasks.route("/create", methods=["GET", "POST"])
 @login_required
 def create() -> ResponseReturnValue:
+    assert isinstance(db, SQLAlchemy)
     if request.method == "POST":
         task = Tasks(
             title=request.form["title"],
@@ -90,8 +96,9 @@ def create() -> ResponseReturnValue:
 @bp_tasks.route("/<int:id>/update", methods=["GET", "POST"])
 @login_required
 def update_by_id(id: int) -> ResponseReturnValue:
+    assert isinstance(db, SQLAlchemy)
     try:
-        task = db.session.execute(db.select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
+        task = db.session.execute(select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
     except NoResultFound:
         abort(404)
 
@@ -108,8 +115,9 @@ def update_by_id(id: int) -> ResponseReturnValue:
 @bp_tasks.route("/<int:id>/close", methods=["GET"])
 @login_required
 def close_by_id(id: int) -> ResponseReturnValue:
+    assert isinstance(db, SQLAlchemy)
     try:
-        task = db.session.execute(db.select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
+        task = db.session.execute(select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
     except NoResultFound:
         abort(404)
 
@@ -123,8 +131,9 @@ def close_by_id(id: int) -> ResponseReturnValue:
 @bp_tasks.route("/<int:id>/open", methods=["GET"])
 @login_required
 def open_by_id(id: int) -> ResponseReturnValue:
+    assert isinstance(db, SQLAlchemy)
     try:
-        task = db.session.execute(db.select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
+        task = db.session.execute(select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
     except NoResultFound:
         abort(404)
 
@@ -138,8 +147,9 @@ def open_by_id(id: int) -> ResponseReturnValue:
 @bp_tasks.route("/<int:id>/delete", methods=["GET"])
 @login_required
 def delete_by_id(id: int) -> ResponseReturnValue:
+    assert isinstance(db, SQLAlchemy)
     try:
-        task = db.session.execute(db.select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
+        task = db.session.execute(select(Tasks).filter_by(id=id).filter_by(user_id=g.user.id)).scalar_one()
     except NoResultFound:
         abort(404)
     db.session.delete(task)
@@ -149,12 +159,13 @@ def delete_by_id(id: int) -> ResponseReturnValue:
 
 @bp_auth.route("/login", methods=("GET", "POST"))
 def login() -> ResponseReturnValue:
+    assert isinstance(db, SQLAlchemy)
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
 
         try:
-            user = db.session.execute(db.select(Users).filter_by(username=username)).scalar_one()
+            user = db.session.execute(select(Users).filter_by(username=username)).scalar_one()
         except NoResultFound:
             flash("Authentication failed. Please try again.")
 

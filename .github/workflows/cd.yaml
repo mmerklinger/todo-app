@@ -5,43 +5,34 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
 env:
-  REPOSITORY: ${{ secrets.CONTAINER_REPOSITORY }}
-  IMAGE_NAME: todo-app
-  IMAGE_TAG: latest
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build_container_image:
-    name: Build image
+  build_and_push_image:
+    name: Build and push image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Build image
-        run: docker build -t $REPOSITORY/$IMAGE_NAME:$IMAGE_TAG .
-      - name: Save image
-        run: docker save $REPOSITORY/$IMAGE_NAME:$IMAGE_TAG -o $IMAGE_NAME-$GITHUB_SHA.tar
-      - name: Upload image
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.IMAGE_NAME }}-${{ github.sha }}
-          path: ${{ env.IMAGE_NAME }}-${{ github.sha }}.tar
-          if-no-files-found: error
-  deploy_container_image:
-    name: Deploy image
-    runs-on: ubuntu-latest
-    needs: build_container_image
-    steps:
-      - name: Download image
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ env.IMAGE_NAME }}-${{ github.sha }}
-      - name: Load Docker image
-        run: docker load -i $IMAGE_NAME-$GITHUB_SHA.tar
-      - name: Login to registry
+      - name: Login to Container registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REPOSITORY }}
-          username: ${{ secrets.CONTAINER_REPOSITORY_USER }}
-          password: ${{ secrets.CONTAINER_REPOSITORY_TOKEN }}
-      - name: Push image
-        run: docker push $REPOSITORY/$IMAGE_NAME:$IMAGE_TAG
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

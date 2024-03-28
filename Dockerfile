@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11-alpine
 
 ENV PIP_ROOT_USER_ACTION=ignore
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
@@ -11,7 +11,7 @@ COPY poetry.lock pyproject.toml .
 COPY todo_app/ todo_app/
 
 # Install dependencies
-RUN apt update && apt install -y gcc libpq-dev && apt clean
+RUN apk update && apk add gcc libc-dev libpq-dev && apk cache clean
 RUN pip install poetry
 RUN poetry install --no-root --without=dev
 

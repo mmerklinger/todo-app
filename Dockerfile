@@ -1,4 +1,6 @@
-FROM python:3.11-alpine AS build
+ARG PYTHON_VERSION=3.11
+
+FROM python:$PYTHON_VERSION-alpine AS build
 
 ENV PIP_ROOT_USER_ACTION=ignore
 ENV PIP_DISABLE_PIP_VERSION_CHECK=on
@@ -15,7 +17,7 @@ RUN apk update && apk add gcc libc-dev libpq-dev && apk cache clean
 RUN pip install poetry
 RUN poetry install --no-root --without=dev
 
-FROM python:3.11-alpine
+FROM python:$PYTHON_VERSION-alpine
 
 # Copy project files
 COPY poetry.lock pyproject.toml .

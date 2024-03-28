@@ -9,7 +9,7 @@ packages = [{include = "todo_app"}]
 [tool.poetry.dependencies]
 Flask = "^3.0.0"
 Flask-SQLAlchemy = "^3.1.1"
-python = "^3.11"
+python = "^3.12"
 python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
@@ -35,6 +35,6 @@ py_version = "311"
 profile = "black"
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.12"
 explicit_package_bases = true
 strict = true

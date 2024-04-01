@@ -2,13 +2,13 @@
                 <h1>Task view</h1>
                 <div class="task-box"></div>
                     <div class="task-box-actions">
-                        <button class="btn-primary-delete"onclick="window.location.href='{{ url_for('tasks.delete_by_id', id=task.id) }}';">Delete task</button>
                         {% if task.open %}
-                        <button class="btn-secondary" onclick="window.location.href='{{ url_for('tasks.close_by_id', id=task.id) }}';">Close task</button>
+                        <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.close_by_id', id=task.id) }}';">Close task</button>
                         {% else %}
-                        <button class="btn-secondary" onclick="window.location.href='{{ url_for('tasks.open_by_id', id=task.id) }}';">Open task</button>
+                        <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.open_by_id', id=task.id) }}';">Open task</button>
                         {% endif %}
-                        <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.update_by_id', id=task.id) }}';">Edit task</button>
+                        <button class="btn-secondary" onclick="window.location.href='{{ url_for('tasks.update_by_id', id=task.id) }}';">Edit task</button>
+                        <button class="btn-primary-delete"onclick="window.location.href='{{ url_for('tasks.delete_by_id', id=task.id) }}';">Delete task</button>
                     </div>
                     <form>
                         <div class="task-box-form-element">

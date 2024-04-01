@@ -7,6 +7,58 @@ body {
     background-color: #F5F5F5;
 }
 
+/* buttons */
+
+.btn-primary {
+    background-color: #116CDD;
+    border-color: #116CDD;
+    border-style: solid;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.btn-primary:hover {
+    background-color: #0D54AB;
+}
+
+.btn-secondary {
+    background-color: white;
+    border-color: #116CDD;
+    border-style: solid;
+    border-radius: 20px;
+    color: #116CDD;
+    font-weight: bold;
+    height: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.btn-secondary:hover {
+    background-color: #E2E2E2;
+    border-color: #0D54AB;
+    color: #0D54AB;
+}
+
+.btn-primary-delete {
+    background-color: #C30000;
+    border-color: #C30000;
+    border-style: solid;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.btn-primary-delete:hover {
+    background-color: #AD0000;
+}
+
 /* tables */
 
 table {

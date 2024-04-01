@@ -65,6 +65,7 @@ body {
 /* tables */
 
 table {
+    margin-top: 1em;
     border-collapse: collapse;
     border-spacing: 0px;
     table-layout: fixed;
@@ -85,14 +86,18 @@ table, th, td {
     flex-direction: row;
 }
 
+.task-box-form-element {
+    margin-top: 1em;
+}
+
 .task-box-form-element > input, textarea {
     box-sizing: border-box;
     width: 100%;
     resize: none;
-    margin-bottom: 1em;
 }
 
 .task-box-actions {
+    margin-top: 1em;
     text-align: right;
 }
 
@@ -106,14 +111,17 @@ table, th, td {
 .auth-box-message-element {
     box-sizing: border-box;
     resize: none;
-    margin-bottom: 1em;
+    margin-top: 1em;
     color: red;
+}
+
+.auth-box-form-element {
+    margin-top: 1em;
 }
 
 .auth-box-form-element > input, textarea {
     box-sizing: border-box;
     resize: none;
-    margin-bottom: 1em;
 }
 
 /* grid */
@@ -121,7 +129,7 @@ table, th, td {
 .grid-container {
     display: grid;
     grid-template-columns: 4fr;
-    gap: 0px 0px;
+    gap: 0.25em 0.25em;
     min-width: 360px;
 }
 
@@ -130,7 +138,6 @@ table, th, td {
     grid-column: 1 / 4;
     height: 3rem;
     background-color: #2c2c2c;
-    border-bottom: 1px solid #c2c2c2;
 }
 
 .menu {
@@ -149,7 +156,6 @@ table, th, td {
 .footer {
     grid-row: 3;
     grid-column: 1 / 4;
-    border-top: 1px solid #c2c2c2;
 }
 
 /* header */
@@ -190,7 +196,7 @@ table, th, td {
     .grid-container {
         display: grid;
         grid-template-columns: 2fr 9fr;
-        gap: 0px 0px;
+        gap: 0.25em 0.25em;
         min-width: 360px;
     }
 
@@ -198,16 +204,13 @@ table, th, td {
         grid-row: 1;
         grid-column: 1 / 12;
         height: 3rem;
-        border-bottom: 1px solid #c2c2c2;
     }
 
     .menu {
         grid-row: 2;
         grid-column: 1;
         display: inline !important;
-        text-align: right;
-        padding: 0.5em;
-        border-right: 1px solid #c2c2c2;
+        text-align: left;
     }
 
     .content {
@@ -220,7 +223,6 @@ table, th, td {
     .footer {
         grid-row: 3;
         grid-column: 1 / 12;
-        border-top: 1px solid #c2c2c2;
     }
 
     /* header */

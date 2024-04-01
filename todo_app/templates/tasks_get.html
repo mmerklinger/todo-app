@@ -1,20 +1,26 @@
 {% include 'header.html' %}
                 <h1>Tasks</h1>
-                <p><button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.create') }}';">Create task</button></p>
-                <table>
-                    <tr>
-                        <th>Title</th>
-                        <th>Status</th>
-                    </tr>
-                    {% for task in tasks %}
-                    <tr>
-                        <th><a href="{{ url_for('tasks.get_by_id', id=task.id) }}">{{ task.title }}</a></th>
-                        {% if task.open %}
-                        <th>Open</th>
-                        {% else %}
-                        <th>Closed</th>
-                        {% endif %}
-                    </tr>
-                    {% endfor %}
-                </table>
+                <div class="task-box">
+                    <div class="task-box-actions">
+                        <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.create') }}';">Create task</button>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Title</th>
+                                <th>Status</th>
+                            </tr>
+                            {% for task in tasks %}
+                            <tr>
+                                <th><a href="{{ url_for('tasks.get_by_id', id=task.id) }}">{{ task.title }}</a></th>
+                                {% if task.open %}
+                                <th>Open</th>
+                                {% else %}
+                                <th>Closed</th>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
 {% include 'footer.html' %}

@@ -130,7 +130,7 @@ table, th, td {
     border-bottom: 1px solid #c2c2c2;
 }
 
-.sidebar {
+.menu {
     grid-column: 1 / 4;
     display: none;
     text-align: center;
@@ -191,7 +191,7 @@ table, th, td {
         border-bottom: 1px solid #c2c2c2;
     }
 
-    .sidebar {
+    .menu {
         grid-row: 2;
         grid-column: 1;
         display: inline !important;

@@ -1,6 +1,6 @@
 {% include 'header.html' %}
                 <h1>Task view</h1>
-                <div class="task-box"></div>
+                <div class="task-box">
                     <div class="task-box-actions">
                         {% if task.open %}
                         <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.close_by_id', id=task.id) }}';">Close task</button>

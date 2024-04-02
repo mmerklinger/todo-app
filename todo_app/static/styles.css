@@ -94,6 +94,7 @@ table, th, td {
     box-sizing: border-box;
     width: 100%;
     resize: none;
+    font-size: 1.5em;
 }
 
 .task-box-actions {
@@ -124,6 +125,7 @@ table, th, td {
     box-sizing: border-box;
     width: 100%;
     resize: none;
+    font-size: 1.5em;
 }
 
 .auth-box-actions {

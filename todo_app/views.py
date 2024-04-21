@@ -88,6 +88,7 @@ def create() -> ResponseReturnValue:
         )
         db.session.add(task)
         db.session.commit()
+        flash(f'Task "{task.title}" was created.')
         return redirect(url_for("tasks.get"))
 
     return render_template("tasks_create.html")
@@ -107,6 +108,7 @@ def update_by_id(id: int) -> ResponseReturnValue:
         task.description = request.form["description"]
         db.session.add(task)
         db.session.commit()
+        flash(f'Task "{task.title}" was edited.')
         return redirect(url_for("tasks.get"))
 
     return render_template("tasks_update_by_id.html", task=task)
@@ -125,7 +127,8 @@ def close_by_id(id: int) -> ResponseReturnValue:
 
     db.session.add(task)
     db.session.commit()
-    return render_template("tasks_close_by_id.html", task=task)
+    flash(f'Task "{task.title}" was closed.')
+    return redirect(url_for("tasks.get"))
 
 
 @bp_tasks.route("/<int:id>/open", methods=["GET"])
@@ -141,7 +144,8 @@ def open_by_id(id: int) -> ResponseReturnValue:
 
     db.session.add(task)
     db.session.commit()
-    return render_template("tasks_open_by_id.html", task=task)
+    flash(f'Task "{task.title}" was opened.')
+    return redirect(url_for("tasks.get"))
 
 
 @bp_tasks.route("/<int:id>/delete", methods=["GET"])
@@ -154,7 +158,8 @@ def delete_by_id(id: int) -> ResponseReturnValue:
         abort(404)
     db.session.delete(task)
     db.session.commit()
-    return render_template("tasks_delete_by_id.html", task=task)
+    flash(f'Task "{task.title}" was deleted.')
+    return redirect(url_for("tasks.get"))
 
 
 @bp_auth.route("/login", methods=("GET", "POST"))

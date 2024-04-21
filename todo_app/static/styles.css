@@ -178,6 +178,7 @@ table, th, td {
     grid-column: 1 / 4;
     display: none;
     text-align: center;
+    padding-top: 3.5rem;
 }
 
 .content {
@@ -223,26 +224,31 @@ table, th, td {
 
 /* menu */
 
-.menu > nav > a {
-    font-size: 1.2em;
-    line-height: 2em;
+.menu > nav > ul > li {
+    margin-bottom: 3rem;
+}
+
+.menu > nav > ul > li > a {
+    font-size: 1.875rem;
+    font-style: normal;
+    line-height: 2rem;
     text-decoration: none;
     font-weight: bold;
 }
 
-.menu > nav > a:link {
+.menu > nav > ul > li > a:link {
     color: black;
 }
 
-.menu > nav > a:visited {
+.menu > nav > ul > li > a:visited {
     color: black;
 }
 
-.menu > nav > a:hover {
+.menu > nav > ul > li > a:hover {
     color: black;
 }
 
-.menu > nav > a:active {
+.menu > nav > ul > li > a:active {
     color: black;
 }
 

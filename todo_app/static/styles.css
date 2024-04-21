@@ -114,6 +114,12 @@ table, th, td {
     margin-top: 1em;
 }
 
+.task-box-message-element {
+    box-sizing: border-box;
+    resize: none;
+    margin-bottom: 1em;
+}
+
 .task-box-form-element > input, textarea {
     box-sizing: border-box;
     width: 100%;

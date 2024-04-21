@@ -2,7 +2,7 @@
                 <h1>Tasks</h1>
                 <div class="task-box">
                     <div class="task-box-actions">
-                        <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.create') }}';">Create task</button>
+                        <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.create') }}';">Create</button>
                     </div>
                     <div class="task-box-message-element">
                         {% with messages = get_flashed_messages() %}

@@ -26,11 +26,13 @@
             </div>
             <div class="menu">
                 <nav>
-                    <a href="{{ url_for('root.index') }}">Home</a><br>
-                    <a href="{{ url_for('tasks.get') }}">All tasks</a><br>
-                    {% if session.user_id is defined %}
-                    <a href="{{ url_for('auth.logout') }}">Logout</a>
-                    {% endif %}
+                    <ul>
+                        <li><a href="{{ url_for('root.index') }}">Home</a></li>
+                        <li><a href="{{ url_for('tasks.get') }}">Tasks</a></li>
+                        {% if session.user_id is defined %}
+                        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                        {% endif %}
+                    </ul>
                 </nav>
             </div>
             <div class="content">

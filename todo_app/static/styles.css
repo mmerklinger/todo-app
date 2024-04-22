@@ -127,24 +127,24 @@ tr:last-child > td:last-child {
 }
 
 .task-box-form-element {
-    margin-top: 1em;
+    margin-top: 1.5rem;
 }
 
 .task-box-message-element {
     box-sizing: border-box;
     resize: none;
-    margin-bottom: 1em;
+    margin-bottom: 1.5rem;
 }
 
 .task-box-form-element > input, textarea {
     box-sizing: border-box;
     width: 100%;
     resize: none;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
 .task-box-actions {
-    margin-top: 1em;
+    margin-top: 1.5rem;
     text-align: right;
 }
 
@@ -159,23 +159,23 @@ tr:last-child > td:last-child {
 .auth-box-message-element {
     box-sizing: border-box;
     resize: none;
-    margin-top: 1em;
+    margin-top: 1.5rem;
     color: red;
 }
 
 .auth-box-form-element {
-    margin-top: 1em;
+    margin-top: 1.5rem;
 }
 
 .auth-box-form-element > input, textarea {
     box-sizing: border-box;
     width: 100%;
     resize: none;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
 .auth-box-actions {
-    margin-top: 1em;
+    margin-top: 1.5rem;
     text-align: right;
 }
 
@@ -184,7 +184,7 @@ tr:last-child > td:last-child {
 .grid-container {
     display: grid;
     grid-template-columns: 4fr;
-    gap: 0.25em 0.25em;
+    gap: 0.25rem 0.25rem;
     min-width: 373px;
 }
 
@@ -222,7 +222,7 @@ tr:last-child > td:last-child {
     flex-direction: row;
     height: 4.5rem;
     align-items: center;
-    margin-left: 0.5em;
+    margin-left: 0.5rem;
 }
 
 .header-menu {
@@ -280,7 +280,7 @@ tr:last-child > td:last-child {
     .grid-container {
         display: grid;
         grid-template-columns: 2fr 9fr;
-        gap: 0.25em 0.25em;
+        gap: 0.25rem 0.25rem;
         min-width: 366px;
     }
 

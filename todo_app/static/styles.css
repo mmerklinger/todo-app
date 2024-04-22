@@ -183,7 +183,7 @@ tr:last-child > td:last-child {
     display: grid;
     grid-template-columns: 4fr;
     gap: 0.25em 0.25em;
-    min-width: 366px;
+    min-width: 373px;
 }
 
 .header {

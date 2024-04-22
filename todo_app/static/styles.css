@@ -67,6 +67,7 @@ input {
     font-style: normal;
     font-weight: 700;
     line-height: 2rem;
+    text-indent: 0.25rem;
 }
 
 textarea {
@@ -79,6 +80,7 @@ textarea {
     font-style: normal;
     font-weight: 700;
     line-height: 2rem;
+    text-indent: 0.25rem;
 }
 
 /* tables */

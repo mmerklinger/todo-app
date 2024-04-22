@@ -21,11 +21,11 @@
                             </tr>
                             {% for task in tasks %}
                             <tr>
-                                <th><a href="{{ url_for('tasks.get_by_id', id=task.id) }}">{{ task.title }}</a></th>
+                                <td><a href="{{ url_for('tasks.get_by_id', id=task.id) }}">{{ task.title }}</a></td>
                                 {% if task.open %}
-                                <th>Open</th>
+                                <td>Open</td>
                                 {% else %}
-                                <th>Closed</th>
+                                <td>Closed</td>
                                 {% endif %}
                             </tr>
                             {% endfor %}

@@ -1,5 +1,9 @@
 {% include 'header.html' %}
                 <h1>TODO-App</h1>
-                <p style="margin-top: 1em">Welcome to the TODO-App!</p>
-                <p style="margin-top: 1em">You can manage your tasks <a href="{{ url_for('tasks.get') }}">here</a>.</p>
+                <div class="welcome-message">
+                    <p>Welcome to the TODO-App!</p>
+                </div>
+                <div style="text-align: center;">
+                    <button class="btn-primary" onclick="window.location.href='{{ url_for('tasks.get') }}';">Tasks</button>
+                </div>
 {% include 'footer.html' %}

@@ -156,7 +156,10 @@ tr:last-child > td:last-child {
 
 .task-box-actions {
     margin-top: 1.5rem;
-    text-align: right;
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
 }
 
 /* authentication box */
@@ -196,7 +199,7 @@ tr:last-child > td:last-child {
     display: grid;
     grid-template-columns: 4fr;
     gap: 0.25rem 0.25rem;
-    min-width: 373px;
+    min-width: 380px;
 }
 
 .header {
@@ -292,7 +295,6 @@ tr:last-child > td:last-child {
         display: grid;
         grid-template-columns: 2fr 9fr;
         gap: 0.25rem 0.25rem;
-        min-width: 366px;
     }
 
     .header {
